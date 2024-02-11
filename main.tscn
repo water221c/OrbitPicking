@@ -1,0 +1,164 @@
+[gd_scene load_steps=5 format=3 uid="uid://dy6mhn6nutjej"]
+
+[ext_resource type="FontFile" uid="uid://djlhewrfa1ux0" path="res://Assets/Fonts/Captura-HeavyDemo.ttf" id="1_i4c3q"]
+[ext_resource type="Script" path="res://main.gd" id="1_mqe23"]
+[ext_resource type="Texture2D" uid="uid://bo800itx6n2nn" path="res://Assets/Images/PlusButton.png" id="2_5upm8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rwi8u"]
+font = ExtResource("1_i4c3q")
+font_size = 144
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_mqe23")
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = -10
+offset_right = 360.0
+offset_bottom = 800.0
+color = Color(0.101961, 0.101961, 0.101961, 1)
+
+[node name="TopBar" type="ColorRect" parent="Background"]
+offset_right = 1080.0
+offset_bottom = 208.0
+scale = Vector2(0.333, 0.333)
+color = Color(0, 0, 0.784314, 1)
+
+[node name="Title" type="Label" parent="Background/TopBar"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 10.0
+offset_right = 649.0
+offset_bottom = 114.0
+text = "Team Picking"
+label_settings = SubResource("LabelSettings_rwi8u")
+horizontal_alignment = 1
+
+[node name="CategoryButton" type="Button" parent="Background"]
+top_level = true
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_left = 260.0
+offset_top = 705.0
+offset_right = 340.0
+offset_bottom = 785.0
+icon = ExtResource("2_5upm8")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Background"]
+top_level = true
+layout_mode = 0
+offset_left = 10.0
+offset_top = 80.0
+offset_right = 350.0
+offset_bottom = 702.0
+metadata/_edit_lock_ = true
+
+[node name="CategoryContainer" type="VBoxContainer" parent="Background/ScrollContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="ContainerBackground" type="ColorRect" parent="Background"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 80.0
+offset_right = 356.0
+offset_bottom = 702.0
+color = Color(0.14902, 0.14902, 0.14902, 1)
+metadata/_edit_lock_ = true
+
+[node name="Clear" type="Button" parent="Background"]
+z_as_relative = false
+layout_mode = 0
+offset_left = 21.0
+offset_top = 723.0
+offset_right = 78.0
+offset_bottom = 754.0
+scale = Vector2(1.2, 1.2)
+text = "CLEAR"
+
+[node name="Save" type="Button" parent="Background"]
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -38.5
+offset_top = -77.0
+offset_right = 18.5
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.2, 1.2)
+text = "SAVE
+"
+
+[node name="InsertTeam" type="VFlowContainer" parent="."]
+visible = false
+layout_direction = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = 240.0
+offset_right = 340.0
+offset_bottom = 480.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextEdit" type="TextEdit" parent="InsertTeam"]
+custom_minimum_size = Vector2(320, 100)
+layout_mode = 2
+placeholder_text = "Please Insert Team Number..."
+
+[node name="TeamConfirmButton" type="Button" parent="InsertTeam"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Confirm"
+
+[node name="TeamCancelButton" type="Button" parent="InsertTeam"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Cancel"
+
+[node name="InsertCategory" type="VFlowContainer" parent="."]
+visible = false
+layout_direction = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = 240.0
+offset_right = 340.0
+offset_bottom = 480.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextEdit" type="TextEdit" parent="InsertCategory"]
+custom_minimum_size = Vector2(320, 100)
+layout_mode = 2
+placeholder_text = "Please Insert Category Name..."
+
+[node name="CategoryConfirmButton" type="Button" parent="InsertCategory"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Confirm"
+
+[node name="CategoryCancelButton" type="Button" parent="InsertCategory"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Cancel"
+
+[connection signal="pressed" from="Background/CategoryButton" to="." method="_on_category_button_pressed"]
+[connection signal="pressed" from="Background/Clear" to="." method="_on_clear_pressed"]
+[connection signal="pressed" from="Background/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="InsertTeam/TeamConfirmButton" to="." method="_on_team_confirm_button_pressed"]
+[connection signal="pressed" from="InsertTeam/TeamCancelButton" to="." method="_on_team_cancel_button_pressed"]
+[connection signal="pressed" from="InsertCategory/CategoryConfirmButton" to="." method="_on_category_confirm_button_pressed"]
+[connection signal="pressed" from="InsertCategory/CategoryCancelButton" to="." method="_on_category_cancel_button_pressed"]

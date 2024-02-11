@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3stnseakl6fs"]
+
+[ext_resource type="Script" path="res://Team.gd" id="1_memn1"]
+
+[node name="Team" type="Label"]
+custom_minimum_size = Vector2(0, 32)
+offset_left = 3.0
+offset_right = 280.0
+offset_bottom = 32.0
+script = ExtResource("1_memn1")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 277.0
+offset_right = 309.0
+offset_bottom = 32.0
+text = "x"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
