@@ -22,13 +22,13 @@ func add_team(name: String):
 	children.append(name)
 	team.connect("FreeQueue", callable)
 	$ScrollContainer/CategoryContainer.add_child(team)
-	$ScrollContainer.size.y = $ScrollContainer.size.y + team.size.y
-	custom_minimum_size.y = custom_minimum_size.y + team.size.y
+	$ScrollContainer.size.y = $ScrollContainer.size.y + team.size.y + 4
+	custom_minimum_size.y = custom_minimum_size.y + team.size.y + 4
 
 
 func FreeQueue(size: int):
-	$ScrollContainer.size.y = $ScrollContainer.size.y - size
-	custom_minimum_size.y = custom_minimum_size.y - size
+	$ScrollContainer.size.y = $ScrollContainer.size.y - size - 4
+	custom_minimum_size.y = custom_minimum_size.y - size - 4
 
 
 func _on_remove_category_pressed():
